@@ -9,10 +9,12 @@
 #include <memory>
 #include <variant>
 //#define RAPIDJSON_SIMD 1
+#ifndef RAPIDJSON_HAS_STDSTRING
 #define RAPIDJSON_HAS_STDSTRING 1
-#include "rapidjson/writer.h"
-#include "rapidjson/prettywriter.h"
-#include "rapidjson/stringbuffer.h"
+#endif
+#include "../../rapidjson/writer.h"
+#include "../../rapidjson/prettywriter.h"
+#include "../../rapidjson/stringbuffer.h"
 namespace CPPRP
 {
 	namespace JSON
@@ -130,7 +132,7 @@ namespace CPPRP
 		template<typename Writer>
 		static inline const void Serialize(Writer& writer, const std::string& item)
 		{
-			writer.String(item);
+			writer.String(item.c_str());
 		}
 
 
